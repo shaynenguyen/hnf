@@ -1,0 +1,31 @@
+{
+  "name": "hnf",
+  "version": "1.0.0",
+  "description": "HNF turns great ideal into real-life daily use application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaynenguyen/hnf.git"
+  },
+  "keywords": [
+    "HNF"
+  ],
+  "author": "Shayne Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaynenguyen/hnf/issues"
+  },
+  "homepage": "https://github.com/shaynenguyen/hnf#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1"
+  }
+}

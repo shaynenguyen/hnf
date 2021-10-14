@@ -4,19 +4,16 @@ body {
 }
 
 .wrapper {
-    width: 700px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 10px;
 }
 
 header, footer {
     background-color: ghostwhite;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 main {
-    background-color: cornsilk;
+    background-color: lightgrey;
     padding: 20px;
 }
 
@@ -25,3 +22,8 @@ main {
     gap: 10px;
     grid-template-columns: 2fr 1fr;
 }
+
+
+
+/* ============= */
+#chatUltilities h4{width:100%;}

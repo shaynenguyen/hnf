@@ -25,31 +25,43 @@ app.set('view engine', 'ejs');
 app.set('views', './Views');
 app.set('layout', '_layout');
 
+// App config
 app.io = io;
+app.urlencoded = urlencodedParser;
+var config;
 
-// Socket Configuration
+// General Configuration
 require("./Routes/io")(io);
 
 // READ & LOAD config file
 loadconfigfile("./config.json")
 function loadconfigfile(file){
-    var obj;
     fs.readFile(file, "utf-8", function(err, data){
         if(err) throw err;
-        obj = JSON.parse(data);
+        config = JSON.parse(data);
+
+        // Database Connection
+        mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology:true }, function(err){
+            if(err) {
+                console.log("Database connected error! " + err);
+            }else{
+                console.log("Database is connected !!!");
+            }
+
+        })
 
         // Binance
-        require("./Routes/binance")(app, Binance, obj);
+        require("./Routes/binance")(app, Binance, config);
         // Route for client
-        require("./Routes/client")(app, obj);
+        require("./Routes/client")(app, config);
 
         require("./Routes/test")(app, urlencodedParser);
 
     });
 }
 
-// Database Connection
-mongoose.connect()
+// Common Routes
+require("./Routes/game")(app);
 
 // ERROR handle
 // app.use((req, res) => {

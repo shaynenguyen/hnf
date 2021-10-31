@@ -4,6 +4,7 @@ const bodyParser    = require("body-parser");
 const Binance       = require("node-binance-api");
 const expressLayout = require("express-ejs-layouts");
 const fs            = require("fs");
+const cors          = require("cors");
 const app           = express();
 const server        = require("http").Server(app);
 const io            = require("socket.io")(server);
@@ -20,6 +21,7 @@ app.use(express.static('Public'))
 // app.use('/css', express.static(__dirname + 'public/css'))
 
 // view engine
+app.use(cors())
 app.use(expressLayout);
 app.set('view engine', 'ejs');
 app.set('views', './Views');
@@ -62,6 +64,7 @@ function loadconfigfile(file){
 
 // Common Routes
 require("./Routes/game")(app);
+require("./Routes/project")(app);
 
 // ERROR handle
 // app.use((req, res) => {

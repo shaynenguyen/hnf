@@ -2,6 +2,7 @@ const express       = require("express");
 const mongoose      = require("mongoose");
 const bodyParser    = require("body-parser");
 const Binance       = require("node-binance-api");
+const history       = require("connect-history-api-fallback");
 const expressLayout = require("express-ejs-layouts");
 const fs            = require("fs");
 const cors          = require("cors");
@@ -20,8 +21,12 @@ app.use(express.static('Public'))
 // Example for other folders - not required
 // app.use('/css', express.static(__dirname + 'public/css'))
 
+// Route in use
+const projectRoute = require("./Routes/project");
+
 // view engine
-app.use(cors())
+app.use(cors());
+// app.use(history());
 app.use(expressLayout);
 app.set('view engine', 'ejs');
 app.set('views', './Views');
@@ -64,7 +69,7 @@ function loadconfigfile(file){
 
 // Common Routes
 require("./Routes/game")(app);
-require("./Routes/project")(app);
+app.use('/project', projectRoute);
 
 // ERROR handle
 // app.use((req, res) => {

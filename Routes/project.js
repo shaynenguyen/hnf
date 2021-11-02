@@ -1,45 +1,25 @@
-const Project = require("../Models/Project");
+const express               = require("express");
+const projectController     = require("../Controllers/projectC");
 
-module.exports = function(app){
-    // Retrieve whole Project in list
-    app.get('/projects', (req, res) => {
-        Project.find()
-            .then((result) => {
-                res.send(result);
-            })
-            .catch((err) => {
-                console.log("Errors Project: " + err)
-            })
-    }),
+const router = express.Router();
 
-    // Find recent id
-    app.get('/project/:id', (req, res) => {
-        Project.findById(req.params.id)
-            .then((result) => {
-                res.send(result)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }),
+// POST new project
+router.post('/create', projectController.project_create);
 
-    // Find Next/Previous id
-    app.get('/project/:id/next', (req, res) => {
-        Project.find({_id: {$gt: req.params.id}}).sort({_id: 1}).limit(1)
-            .then((result) => {
-                res.send(result[0]._id.toString())
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }),
-    app.get('/project/:id/previous', (req, res) => {
-        Project.find({_id: {$lt: req.params.id}}).sort({_id: -1}).limit(1)
-            .then((result) => {
-                res.send(result[0]._id.toString())
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    })
-}
+// Retrieve whole Project in list
+router.get('/list', projectController.project_list),
+
+// Project Details
+router.get('/:id', projectController.project_detail),
+
+// DELETE selected project
+router.delete('/:id', projectController.project_delete),
+
+// EDIT selected project
+router.put('/:id', projectController.project_edit),
+
+// Find Next/Previous id
+router.get('/:id/next', projectController.project_go_forward),
+router.get('/:id/previous', projectController.project_go_backward)
+
+module.exports = router;

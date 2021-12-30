@@ -23,17 +23,16 @@ const project_list = (req, res) => {
 };
 
 // project creation
-const project_create = (req, res) => {
-    console.log(req.body)
+const project_create = async (req, res) => {
     var newProject = new Project(req.body);
-
-    Project.save()
-        .then((result) => {
-            res.redirect('/list')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+    console.log(newProject);
+    // await newProject.save()
+    //     .then((result) => {
+    //         res.redirect('/list')
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+        // })
 };
 
 // project deletion

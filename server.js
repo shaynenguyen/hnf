@@ -22,12 +22,15 @@ app.use(express.static('Public'))
 // app.use('/css', express.static(__dirname + 'public/css'))
 
 // Route in use
-const projectRoute = require("./Routes/project");
+const projectRoute  = require("./Routes/project");
+const staffRoute    = require("./Routes/staffV");
 
 // view engine
 app.use(cors());
+
 // app.use(history());
 app.use(expressLayout);
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', './Views');
 app.set('layout', '_layout');
@@ -70,6 +73,7 @@ function loadconfigfile(file){
 // Common Routes
 require("./Routes/game")(app);
 app.use('/project', projectRoute);
+app.use('/staff', staffRoute);
 
 // ERROR handle
 // app.use((req, res) => {

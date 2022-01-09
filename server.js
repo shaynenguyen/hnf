@@ -1,3 +1,4 @@
+// 1. Import dependencies
 const express       = require("express");
 const mongoose      = require("mongoose");
 const bodyParser    = require("body-parser");
@@ -21,7 +22,7 @@ app.use(express.static('Public'))
 // Example for other folders - not required
 // app.use('/css', express.static(__dirname + 'public/css'))
 
-// Route in use
+// 2. Route in use
 const projectRoute  = require("./Routes/project");
 const staffRoute    = require("./Routes/staffV");
 

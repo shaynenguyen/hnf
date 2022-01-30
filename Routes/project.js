@@ -1,10 +1,24 @@
 const express               = require("express");
+const bodyParser            = require("body-parser");
 const projectController     = require("../Controllers/projectC");
 
+// 1. Middleware configuration
+const urlencodedParser      = bodyParser.urlencoded({ extended: false})
+
+// 2. Router configuration
 const router = express.Router();
 
+// TO DO:
+// Express-validator (optional)
+
 // POST new project
-router.post('/create', projectController.project_create);
+router.post('/create',urlencodedParser, projectController.project_create);
+
+router.get('/', (req, res) => {
+    console.log("Project request!ß")
+    res.redirect("/list")
+    // TODO: redirect to /list automative.
+})
 
 // Retrieve whole Project in list
 router.get('/list', projectController.project_list),

@@ -15,6 +15,11 @@ const project_detail = (req, res) => {
 const project_list = (req, res) => {
     Project.find()
         .then((result) => {
+            // TODO: Fix display Date
+
+            let options = { year: "numeric", month: "short", day: "numeric"};
+            // console.log((new Date(Date.parse(result[0].due))).toLocaleDateString('en-us', options));
+
             res.send(result);
         })
         .catch((err) => {
@@ -25,6 +30,9 @@ const project_list = (req, res) => {
 // project creation
 const project_create = async (req, res) => {
     var newProject = new Project(req.body);
+    // TODO:
+    // - verification server side
+
     console.log(newProject);
     // await newProject.save()
     //     .then((result) => {

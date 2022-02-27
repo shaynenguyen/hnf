@@ -8,7 +8,7 @@ const staff_list = (req, res) => {
             result.forEach((staff) => {
                 data.push(staff.first_name + ' ' + staff.last_name);
             })
-            console.log(data);
+            // console.log(data);
             res.send(data);
         })
         .catch((err) => {

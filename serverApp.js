@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // 1.1 configuration dependencies
 const configViewEngine  = require('./config/viewEngine');
+const middleware        = require('./config/middleware');
 const configRoute       = require('./config/routes');
 
 // 1.2 middleware configuration.
@@ -13,6 +14,7 @@ app.use(express.json())
 // 1.3 Hookup custom configuration
 configViewEngine(app);
 configRoute(app);
+middleware(app);
 
 // 2. Import routes for api
 

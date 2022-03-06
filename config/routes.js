@@ -3,21 +3,17 @@
 */
 
 // Dependencies
-const  fs           = require("fs");
-const  mongoose     = require("mongoose");
+const   mongoose    = require("mongoose");
 
 // Route in use
 const projectRoute  = require("../Routes/project");
-const staffRoute    = require('../Routes/staffV');
+const staffRoute    = require('../Routes/staff');
+const binanceRoute  = require("../Routes/binance");
 
-module.exports = function(app){
-    app.get('/', (req, res) => {
-        console.log("Hello World!");
-        res.send('Hello World')
-    })
+module.exports = async function(app){
 
     // Connect to Database Host
-    mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology:true }, function(err){
+    await mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology:true }, function(err){
         if(err) {
             console.log("Database connected error! " + err);
         }else{
@@ -27,7 +23,15 @@ module.exports = function(app){
             // Routes
             app.use('/project', projectRoute);
             app.use('/staff', staffRoute);
+            app.use('/binance', binanceRoute);
+
+            // Alert of Binance API
+            console.log("Binance API is setup !!!")
         }
+    })
+    app.get('/', (req, res) => {
+        console.log("Hello World!");
+        res.send('Hello World')
     })
 
 };

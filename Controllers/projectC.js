@@ -1,4 +1,4 @@
-const Project = require("../Models/Project");
+const Project = require("../Models/ProjectM");
 
 // Project Details Controller
 const project_detail = (req, res) => {

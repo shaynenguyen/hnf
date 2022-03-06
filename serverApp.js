@@ -13,10 +13,10 @@ app.use(express.json())
 
 // 1.3 Hookup custom configuration
 configViewEngine(app);
-configRoute(app);
 middleware(app);
 
 // 2. Import routes for api
+configRoute(app);
 
 // 3. Start server
 const port = process.env.PORT || 3000;

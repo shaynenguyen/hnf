@@ -24,7 +24,7 @@ app.use(express.static('Public'))
 
 // 2. Route in use
 const projectRoute  = require("./Routes/project");
-const staffRoute    = require("./Routes/staffV");
+const staffRoute    = require("./Routes/staff");
 
 // view engine
 app.use(cors());

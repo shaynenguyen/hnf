@@ -1,26 +1,12 @@
-const request = require("request");
+const express               = require("express");
+const binanceController     = require("../Controllers/binanceC");
 
-module.exports = function(app, Binance, config){
-    const binance = new Binance().options({
-        APIKEY: config.API,
-        APISECRET: config.KEY
-    });
-    // binance.futuresMiniTickerStream( 'ADAUSDT', function(data){
-    //     // console.log("Server is socketting Binance Stream !!!");
-    //     app.io.sockets.emit("Server-send-price", data.close)
-    // });
+// 2. Router configuration
+const router                = express.Router();
 
-    app.get('/binance', (req, res) => {
-        var listPair = [];
-        request('http://api.binance.com/api/v3/ticker/bookTicker', function(error, response, body){
+// 3. METHODS
+// Retrive all listed symbols
+router.get('/symbols', binanceController.list_symbols)
 
-            body = JSON.parse(body);
-            // console.log(body[0].symbol);
-            for (var i in body)
-                listPair.push([body[i].symbol])
-            res.render('binance', { title: 'Binance Communication', listSymbol: listPair})
-        })
-
-    })
-
-}
+// 4. Exports
+module.exports = router;

@@ -3,12 +3,14 @@
 */
 
 // Dependencies
-const   mongoose    = require("mongoose");
+const   mongoose            = require("mongoose");
+const   request             = require("request");
 
 // Route in use
-const projectRoute  = require("../Routes/project");
-const staffRoute    = require('../Routes/staff');
-const binanceRoute  = require("../Routes/binance");
+const projectRoute          = require("../Routes/project");
+const staffRoute            = require('../Routes/staff');
+const binanceRoute          = require("../Routes/binance");
+const userRoute             = require("../Routes/user")
 
 module.exports = async function(app){
 
@@ -19,14 +21,26 @@ module.exports = async function(app){
         }else{
             // Connection  status
             console.log("Database (MongoDB) is connected !!!");
+            console.log("ENABLE server EndPoint")
 
             // Routes
             app.use('/project', projectRoute);
             app.use('/staff', staffRoute);
-            app.use('/binance', binanceRoute);
+            app.use('/user', userRoute);
+        }
+    })
 
+    await request('http://api.binance.com/sapi/v1/system/status', function(error, response, body){
+        body = JSON.parse(body)
+        if (body.status == 0){
             // Alert of Binance API
-            console.log("Binance API is setup !!!")
+            console.log("API [BINANCE] is in normal stream !!!")
+
+            app.use('/binance', binanceRoute);
+        }else{
+            console.log("Something wrong with Binance API !")
+            console.log({error});
+            console.log('statusCode:', response && response.statusCode);
         }
     })
     app.get('/', (req, res) => {

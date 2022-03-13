@@ -4,7 +4,7 @@ const request   =   require("request");
 const list_symbols = (req, res) => {
     var result = [];
     request('http://api.binance.com/api/v3/ticker/bookTicker', function(error, response, body){
-
+        console.log({error})
         body = JSON.parse(body);
         body.forEach((element) => {
             result.push(element.symbol)

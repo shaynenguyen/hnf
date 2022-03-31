@@ -71,7 +71,7 @@ const login = (req, res, next) => {
 
                         return res.status(200).json({
                             message: 'Auth successful',
-                            token:  authToken
+                            user:  authToken
                         })
                     }
 
@@ -87,7 +87,13 @@ const login = (req, res, next) => {
         })
 }
 
+// Logout user
+const logout = (req, res, next) => {
+
+}
+
 module.exports = {
     signup,
-    login
+    login,
+    logout
 }

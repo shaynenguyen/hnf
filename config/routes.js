@@ -10,7 +10,8 @@ const   request             = require("request");
 const projectRoute          = require("../Routes/project");
 const staffRoute            = require('../Routes/staff');
 const binanceRoute          = require("../Routes/binance");
-const userRoute             = require("../Routes/user")
+const userRoute             = require("../Routes/user");
+const quizzRoute            = require('../Routes/quizz');
 
 module.exports = async function(app){
 
@@ -27,6 +28,7 @@ module.exports = async function(app){
             app.use('/project', projectRoute);
             app.use('/staff', staffRoute);
             app.use('/user', userRoute);
+            app.use('/quizz', quizzRoute);
         }
     })
 

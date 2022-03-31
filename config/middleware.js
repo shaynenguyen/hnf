@@ -1,4 +1,5 @@
 const cors      =   require("cors");
+const morgan    =   require("morgan");
 const Binance   =   require("node-binance-api");
 
 /*
@@ -12,4 +13,5 @@ const binance   = new Binance().options({
 
 module.exports = function(app){
     app.use(cors());
+    app.use(morgan('dev'))
 }

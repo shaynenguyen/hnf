@@ -18,5 +18,8 @@ export const mutations = {
     },
     UPDATE_MINI_VARIANT(state) {
         state.miniVariant = !state.miniVariant
+    },
+    UPDATE_FIXED(state) {
+        state.fixed = !state.fixed
     }
 }

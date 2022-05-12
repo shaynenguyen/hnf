@@ -1,6 +1,6 @@
 <template>
   <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }} | HNF Project</span>
     </v-footer>
 </template>
 

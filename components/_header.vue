@@ -7,7 +7,7 @@
       <v-btn icon @click.stop="UPDATE_CLIPPED">
         <v-icon>mdi-application</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
+      <v-btn icon @click.stop="UPDATE_FIXED">
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
@@ -40,7 +40,8 @@ export default {
             'UPDATE_MAIN_DRAWER',
             'UPDATE_MINI_VARIANT',
             'UPDATE_CLIPPED',
-            'UPDATE_SECOND_DRAWER'
+            'UPDATE_SECOND_DRAWER',
+            'UPDATE_FIXED'
         ])
     }
 }

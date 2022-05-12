@@ -38,6 +38,11 @@ export default {
           to: '/',
         },
         {
+          icon: 'mdi-lightbulb-on-outline',
+          title: 'Projects',
+          to: '/project'
+        },
+        {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire',

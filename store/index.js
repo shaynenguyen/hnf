@@ -1,11 +1,15 @@
+// STAGE
 export const state = () => ({
     mainDrawer:     null,
     secondDrawer:   null,
     clipped:        false,
     miniVariant:    false,
     fixed:          false,
+    message:        'empty',
+    skeleton:       true
 })
 
+// MUTATIONS
 export const mutations = {
     UPDATE_MAIN_DRAWER(state){
         state.mainDrawer = !state.mainDrawer
@@ -21,5 +25,17 @@ export const mutations = {
     },
     UPDATE_FIXED(state) {
         state.fixed = !state.fixed
+    },
+    UPDATE_MESSAGE(state, payload){
+        state.message = payload
+    },
+    UPDATE_SKELETON(state){
+        state.skeleton = !state.skeleton
     }
 }
+
+// ACTIONS
+export const actions = {}
+
+// GETTERS
+export const getters = {}

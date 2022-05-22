@@ -40,7 +40,7 @@ export default {
         {
           icon: 'mdi-lightbulb-on-outline',
           title: 'Projects',
-          to: '/project'
+          to: '/projects'
         },
         {
           icon: 'mdi-chart-bubble',

@@ -4,12 +4,14 @@ const User          = require('../models/userM')
 const signup = (req, res) => {
     // TODO: signup new user
     console.log("Signup user.")
+    res.send({data: 'signup'});
 }
 
 // User log-in
 const login = (req, res) => {
     //    TODO: log user in
     console.log("Login user.")
+    res.send({data: 'login'});
 }
 
 // User log-out

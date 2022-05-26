@@ -11,19 +11,19 @@
         <!-- Name:  -->
         <v-col cols="4" md="4" sm="10">
             <span class="accent--text">Project Name:</span>
-            <p class="title">{{ data.title }}</p>
+            <p class="title white--text">{{ data.title }}</p>
         </v-col>
 
         <!-- Person  -->
         <v-col cols="3" md="3" sm="6">
             <span class="accent--text">Created By:</span>
-            <p class="title">{{ data.person }}</p>
+            <p class="title white--text">{{ data.person }}</p>
         </v-col>
 
         <!-- Date  -->
         <v-col cols="2" md="2" sm="6">
             <span class="accent--text">Date:</span>
-            <p class="title">{{ handleDate(data.createdAt) }}</p>
+            <p class="title white--text">{{ handleDate(data.createdAt) }}</p>
         </v-col>
 
         <!-- Status  -->

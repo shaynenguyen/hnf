@@ -7,8 +7,8 @@ const mongoose    = require('mongoose')
 require('dotenv').config();
 
 // Route in use
-const projectRoute          = require('./routes/projectR');
-const userRoute             = require('./routes/userR')
+const projectRoute          = require('./routes/projectRoute');
+const userRoute             = require('./routes/userRoute')
 
 module.exports = async (app) => {
     // Connect to Database Host

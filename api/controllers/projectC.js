@@ -2,7 +2,7 @@ const Project   = require('../models/projectM')
 const services  = require('../services');
 
 // Retrieve list projects in database
-const get_list_projects = (req, res) => {
+const getAllProjects = (req, res) => {
 
     Project.find()
         .then((result) => {
@@ -13,7 +13,7 @@ const get_list_projects = (req, res) => {
 }
 
 // Create new project
-const create_new_project = async (req, res) => {
+const createNewProject = async (req, res) => {
     var newProject = new Project({
                             title:      req.body.title,
                             person:     req.body.person,
@@ -31,7 +31,7 @@ const create_new_project = async (req, res) => {
 }
 
 // View selected Project
-const project_detail = (req, res) => {
+const getOneProject = (req, res) => {
     let id  = req.params.id
     Project.findById(id)
         .then((result)  => services(res, result))
@@ -39,7 +39,7 @@ const project_detail = (req, res) => {
 }
 
 // Edit selected project
-const edit_project = (req, res) => {
+const updateOneProject = (req, res) => {
     let thisid          = req.params.id;
     const updatedValue  = {
             title:      req.body.title,
@@ -61,7 +61,7 @@ const edit_project = (req, res) => {
 }
 
 // Delete selected project
-const delete_project = (req, res) => {
+const deleteOneProject = (req, res) => {
     let targetid    = req.params.id
 
     // Query in database
@@ -71,25 +71,25 @@ const delete_project = (req, res) => {
 }
 
 // Forward project
-const project_go_forward = (req, res) => {
+const forwardOneProject = (req, res) => {
     Project.find({_id: {$gt: req.params.id}}).sort({_id: 1}).limit(1)
         .then((result)  => services(res, result[0]._id.toString()))
         .catch((err)    => services(res, err, false))
 };
 
 // BackWard project
-const project_go_backward = (req, res) => {
+const backwardOneProject = (req, res) => {
     Project.find({_id: {$lt: req.params.id}}).sort({_id: -1}).limit(1)
         .then((result)  => services(res, result[0]._id.toString()))
         .catch((err)    => services(res, err, false))
 };
 
 module.exports = {
-    get_list_projects,
-    create_new_project,
-    project_detail,
-    edit_project,
-    delete_project,
-    project_go_forward,
-    project_go_backward
+    getAllProjects,
+    createNewProject,
+    getOneProject,
+    updateOneProject,
+    deleteOneProject,
+    forwardOneProject,
+    backwardOneProject
 }

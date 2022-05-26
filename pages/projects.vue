@@ -20,9 +20,9 @@
                 </v-card-text>
 
                 <!-- Raw Data  -->
-                <v-card-text>
+                <!-- <v-card-text>
                     {{ projectList }}
-                </v-card-text>
+                </v-card-text> -->
             </v-col>
         </v-row>
     </v-card>
@@ -37,15 +37,19 @@ export default {
     name: 'ProjectPage',
     components: { Project, Skeleton},
     layout: 'default',
+    async asyncData({ $axios, commit }) {
+        const result = await $axios.get("/project/list-all")
+        console.table(result.data)
+        commit('UPDATE_SKELETON', null, {root: true})
+        commit('UPDATE_MESSAGE', result.status ,{root: true})
+        return commit('UPDATE_LIST_PROJECTS', result.data )
+    },
     computed: {
         ...mapState({
             projectList:    state   => state.projects.projectList,
             skeleton:       state   => state.skeleton,
             message:        state   => state.message
         })
-    },
-    created(){
-        this.getProject();
     },
     methods: {
         ...mapMutations([

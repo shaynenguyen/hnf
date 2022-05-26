@@ -3,10 +3,10 @@
     @data  :    params data value will be sent
 */
 
-module.exports = (res, data, status = true) =>{
+module.exports = (res, details, status = true) =>{
 
     // When no params are passed
-    if(arguments.length == 0){
+    if(arguments.length === 0){
         return  res.status(500).send({
                     status: 'warning',
                     data: {
@@ -17,15 +17,15 @@ module.exports = (res, data, status = true) =>{
 
     // Data is successfully passed
     if(status) {
-        return  res.status(200).send({
+        return  res.status(201).send({
                     status: 'success',
-                    data: data
+                    data: details
                 });
     }
 
     // Error found during fetching data
     return res.status(500).send({
                 status: 'error',
-                data: data
+                data: details
             })
 }

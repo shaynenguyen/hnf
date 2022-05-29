@@ -6,7 +6,6 @@ export const state = () => ({
     miniVariant:    false,
     fixed:          false,
     message:        'empty',
-    skeleton:       true
 })
 
 // MUTATIONS
@@ -28,9 +27,6 @@ export const mutations = {
     },
     UPDATE_MESSAGE(state, payload){
         state.message = payload
-    },
-    UPDATE_SKELETON(state){
-        state.skeleton = !state.skeleton
     }
 }
 

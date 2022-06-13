@@ -13,16 +13,23 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
     "core-js": "^3.19.3",
+    "csurf": "^1.11.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
+    "helmet": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.2",
     "nuxt": "^2.15.8",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
@@ -39,6 +46,8 @@
     "eslint-plugin-jest": "^26.2.2",
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "sass": "^1.52.2",
+    "sass-loader": "^10.2.1"
   }
 }

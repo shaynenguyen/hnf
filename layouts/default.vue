@@ -4,7 +4,7 @@
         <LeftNav />
 
         <!-- Header Section  -->
-        <Header/>
+        <Header :title="title"/>
 
         <!-- Page Content  -->
         <v-main>

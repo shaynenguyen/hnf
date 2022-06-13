@@ -1,41 +1,38 @@
 <template>
     <div>
         <!-- Header Content  -->
-        <ContentHeader title="Projects Report"/>
+        <ContentHeader title="Project"/>
+        <Tags />
 
         <!-- Main Content  -->
         <!-- ============= -->
-        <v-card class="my-5">
-            <v-row>
-                <v-col cols='12' sm='8' md='12'>
-                    <!-- Title  -->
-                    <!-- <v-card-title class="headline">Our Current Projects</v-card-title>
-                    <v-card-subtitle v-if="projectList" class="accent--text" >Has {{ message }} fetched {{ projectList.length }} items.</v-card-subtitle> -->
-
-
-                    <!-- Content  -->
-                    <v-card-text>
-                        <Skeleton v-if="projectList.length === 0"/>
-                        <Project
-                            v-for="(project, index) in projectList"
-                            v-else
-                            :id="index.toString()"
-                            :key="project._id"
-                            :data="project"
+        <v-list>
+        <!-- List Projects  -->
+            <Skeleton v-if="projectList.length === 0"/>
+            <v-list-item-group v-else>
+                <ListHeader />
+                <v-list-item
+                    v-for="(project, index) in projectList"
+                    :key="index"
+                >
+                    <v-list-item-content class="pb-0">
+                        <nuxt-link :to="{ name: 'project-slug', params: {slug: project._id}}">
+                            <Project
+                                :id="index.toString()"
+                                :data="project"
                             />
-                    </v-card-text>
 
-                    <v-divider class="mx-4"></v-divider>
+                            <v-divider></v-divider>
+                        </nuxt-link>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list-item-group>
 
-                    <!-- Raw Data  -->
-                    <!-- <v-card-text>
-                        {{ projectList }}
-                    </v-card-text> -->
-                </v-col>
-            </v-row>
-        </v-card>
-
-        <!-- Footer Content  -->
+            <!-- Pagination  -->
+            <v-list-item>
+                <Pagination />
+            </v-list-item>
+        </v-list>
     </div>
 </template>
 
@@ -43,11 +40,14 @@
 import { mapMutations, mapActions} from 'vuex';
 import Project from '../components/routes/project'
 import Skeleton from '../components/skeletons/projectSkeleton'
-import ContentHeader from '@/components/contentHeader'
+import ContentHeader from '@/components/contentHeader';
+import Pagination from '@/components/_pagination';
+import ListHeader from '@/components/static/projectListHeader';
+import Tags from '@/components/_tags';
 
 export default {
     name: 'ProjectPage',
-    components: { Project, Skeleton, ContentHeader},
+    components: { Project, Skeleton, ContentHeader, Pagination, ListHeader, Tags},
     layout: 'default',
     async asyncData({ $axios }) {
        const result = (await $axios.get("/project/list-all")).data;
@@ -57,12 +57,11 @@ export default {
 
        return { message, projectList }
     },
-    // computed: {
-    //     ...mapState({
-    //         projectList:    state   => state.projects.projectList,
-    //         message:        state   => state.message
-    //     })
-    // },
+    computed: {
+        // ...mapState({
+        //     listHeader: state => state.projects.listHeader
+        // })
+    },
     methods: {
         ...mapMutations([
             'UPDATE_SKELETON',
@@ -76,6 +75,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+a{
+    text-decoration: none;
+    color: #FBF5F3 !important;
+}
 </style>

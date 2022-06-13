@@ -5,13 +5,26 @@ const userSchema        = new mongoose.Schema({
         required:   true,
         unique:     true,
     },
+    email: {
+        type:       String,
+        required:   true,
+        unique:     true,
+    },
     password: {
         type:       String,
         required:   true,
     },
-    signupType: {
+    type: {
         type:       String,
-        default:    'email'
+        default:    'local'
+    },
+    refId: {
+        type:       String,
+        default:    null
+    },
+    photo: {
+        type:       String,
+        default:    null
     }
 });
 

@@ -2,3 +2,23 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+/* SCSS COLOR MAIN HEX */
+// ========================
+$tea-green: #c1e1c1ff;
+$avocado: #5c8001ff;
+$teal-blue: #0c7489ff;
+$bright-yellow-crayola: #fbb02dff;
+$orange-pantone: #fb6107ff;
+$white:      #FBF5F3; // Snow
+$accent:     '#424242';
+
+// LEVEL 2 COLOUR
+// ========================
+$secondary:  $avocado; // Avocado
+$info:       $teal-blue; // Teal Blue
+$warning:    $bright-yellow-crayola; // Bright Yellow Crayola
+$error:      $orange-pantone; // Orange Pantone
+$ongoing:    $avocado; // Avocado
+$complete:   $teal-blue; // Teal Blue
+$postpone:   $bright-yellow-crayola; // Bright Yellow Crayola
+$overdue:    $orange-pantone; // Orange Pantone

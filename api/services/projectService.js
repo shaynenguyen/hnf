@@ -1,7 +1,7 @@
 /*
     IN api/services/projectService
 */
-const Project = require('../models/projectM');
+const Project = require('../models/projectModel');
 
 // Retrieve list projects in database
 const getAllProjects = () => {

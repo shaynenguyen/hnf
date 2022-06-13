@@ -1,4 +1,4 @@
-const Project   = require('../models/projectM')
+const Project   = require('../models/projectModel')
 const services  = require('../services');
 
 // Retrieve list projects in database

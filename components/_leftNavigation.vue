@@ -4,6 +4,7 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
+      permanent
       app
     >
       <v-list>
@@ -22,6 +23,12 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <template #append>
+        <div class="text-center">
+          <v-subheader class="py-4 caption d-block">Version: 0.01.00</v-subheader>
+        </div>
+      </template>
     </v-navigation-drawer>
 </template>
 
@@ -38,15 +45,20 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-lightbulb-on-outline',
+          icon: 'mdi-chart-bubble',
           title: 'Projects',
           to: '/projects'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-view-week-outline',
+          title: 'Rosters',
+          to: '/rosters'
         },
+        {
+          icon: 'mdi-warehouse',
+          title: 'Inventory',
+          to: 'inventory'
+        }
       ],
       }
   },

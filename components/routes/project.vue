@@ -1,44 +1,54 @@
 <template>
-    <v-row cols="12" md="12" sm="12" class="secondbg rounded-lg mx-0 mb-3 mt-1">
+    <v-row>
         <!-- Identification Number  -->
-        <v-col cols="1" md="1" sm="2">
-            <p :class="`${data.status}--text mt-4 headline`">
-                <span class="accent--text">#</span>
-                00{{ id }}
-            </p>
+        <v-col cols="2" md="2" sm="12">
+            <v-list-item-content>
+                <v-list-item-subtitle class="accent--text font-weight-bold subtitle-1">#PRO22M500{{ id }}</v-list-item-subtitle>
+            </v-list-item-content>
         </v-col>
 
         <!-- Name:  -->
-        <v-col cols="4" md="4" sm="10">
-            <span class="accent--text">Project Name:</span>
-            <p class="title white--text">{{ data.title }}</p>
+        <v-col cols="3" md="3" sm="12">
+            <v-list-item-content>
+                <v-list-item-title>{{ data.title }}</v-list-item-title>
+            </v-list-item-content>
         </v-col>
 
         <!-- Person  -->
         <v-col cols="3" md="3" sm="6">
-            <span class="accent--text">Created By:</span>
-            <p class="title white--text">{{ data.person }}</p>
+            <v-list-item-content>
+                <v-list-item-title>{{ data.person }}</v-list-item-title>
+            </v-list-item-content>
         </v-col>
 
-        <!-- Date  -->
-        <v-col cols="2" md="2" sm="6">
-            <span class="accent--text">Date:</span>
-            <p class="title white--text">{{ handleDate(data.createdAt) }}</p>
+        <!-- End Date  -->
+        <v-col cols="3" md="3" sm="12">
+            <v-list-item-content>
+                <v-list-item-title>{{ handleDate(data.createdAt) }}  -  {{ handleFullDate(data.createdAt) }}</v-list-item-title>
+            </v-list-item-content>
         </v-col>
 
-        <!-- Status  -->
-        <v-col cols="2" md="2" sm="3">
-            <v-chip
-                label
-                align="center"
-                :class="`${data.status} white--text body-2 mt-5 px-5 d-block`">
-                {{ data.status}}</v-chip>
+        <!-- Status Color  -->
+        <v-col cols="1" md="1" sm="12">
+            <v-list-item-content>
+                <v-list-item-title>
+                    <v-list-item-subtitle :class="`${data.status}--text text-center`">
+                        <v-badge
+                            :color="`${data.status}`"
+                            dot
+                            inline
+                            left
+                        >
+                        </v-badge>
+                    </v-list-item-subtitle>
+                </v-list-item-title>
+            </v-list-item-content>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import { displayDate } from '@/services';
+import { displayFullDateMonthYear, displayDayMonth } from '@/services';
 
 export default {
     name:   'ProjectComponent',
@@ -54,7 +64,10 @@ export default {
     },
     methods: {
         handleDate: (target) => {
-            return displayDate(target)
+            return displayDayMonth(target)
+        },
+        handleFullDate: (target) => {
+            return displayFullDateMonthYear(target)
         }
     }
 }

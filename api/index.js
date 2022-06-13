@@ -1,18 +1,25 @@
 // 1. Import dependencies
 // ======================
-const express               = require('express');
-const promiseMiddleware     = require('./middleware/promise');
-const routes                = require('./routes');
-const app                   = express();
+const express            = require('express');
+const promiseMiddleware  = require('./middleware/promise');
+const surfingMiddleware  = require('./middleware/protectSurfing');
+const cookieMiddleware   = require('./middleware/cookie');
 
-// 1.2 middleware configuration
+const routes             = require('./routes');
+const app                = express();
+
+
+// 2. middleware configuration
 app.use(express.json()) // Init body-parser options (inbuilt with express)
 app.use(promiseMiddleware());
+app.use(surfingMiddleware.cookieParser);
+app.use(surfingMiddleware.csrfMiddleware);
+app.use(surfingMiddleware.helmet);
+app.use(cookieMiddleware);
 
-// 2. Require & Import API ROUTES
+// 3. Require & Import API ROUTES
 // ==============================
 routes(app);
-
 
 //The 404 Route (ALWAYS Keep this as the last route)
 // app.get('*', function(req, res){

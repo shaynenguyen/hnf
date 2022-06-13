@@ -25,6 +25,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    a{
+        color: $info;
+    }
 </style>

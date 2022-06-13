@@ -10,12 +10,16 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      { name: 'csrf-token', content: '{{ csrf_token() }}'}
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    // SCSS file in the project
+    // '~/assets/variables.scss'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -37,6 +41,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -52,27 +57,30 @@ export default {
     },
   },
 
+  // Authentication for Nuxt
+  auth: {
+
+  },
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake:  true,
     theme: {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken1,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-          mainbg:     '#2E2E2E',
-          secondbg:   colors.grey.darken3,
-          overdue:    colors.pink.darken3,
-          complete:   colors.teal.darken3,
-          ongoing:    colors.lightBlue.darken3,
-          postpone:   colors.orange.darken3,
-          white:      '#FAFAFA',
+          primary:    colors.teal.base, // Persian Green/Teal
+          accent:     colors.grey.darken2,
+          white:      '#FBF5F3', // Snow
+          secondary:  '#5C8001', // Avocado
+          info:       '#0C7489', // Teal Blue
+          warning:    '#FBB02D', // Bright Yellow Crayola
+          error:      '#FB6107', // Orange Pantone
+          ongoing:    '#5C8001', // Avocado
+          complete:   '#0C7489', // Teal Blue
+          postpone:   '#FBB02D', // Bright Yellow Crayola
+          overdue:    '#FB6107', // Orange Pantone
         },
       },
     },

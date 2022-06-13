@@ -1,14 +1,37 @@
 <template>
-    <v-row>
-        <v-col cols="12" md="12" sm="12">
-            <v-breadcrumbs :items="items" class="pb-0 pl-0">
-                <template v-slot:divider>
+    <v-row no-gutters class="mb-10">
+        <v-col cols="12" md="12">
+            <v-breadcrumbs :items="items" class="px-0 pb-0" divider=">">
+                <!-- <template v-slot:divider>
                     <v-icon>mdi-chevron-right</v-icon>
-                </template>
+                </template> -->
             </v-breadcrumbs>
-            <v-subheader class="pl-0">
-                <h2 class="headline">{{ title }}</h2>
+        </v-col>
+        <v-col cols="12" md="12" sm="12">
+            <v-subheader class="pl-0 pt-0 float-left">
+                <h2 class="headline">{{ title }}s List Report</h2>
             </v-subheader>
+            <v-spacer></v-spacer>
+
+            <div class="float-right">
+                <v-btn icon>
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+                <v-btn icon>
+                    <v-icon>mdi-view-grid-plus-outline</v-icon>
+                </v-btn>
+                <v-btn icon class="mr-3">
+                    <v-icon>mdi-filter</v-icon>
+                </v-btn>
+                <v-btn
+                    depressed
+                    color="info"
+                    class="float-right"
+                >
+                    <v-icon class="mr-2">mdi-plus</v-icon>
+                    New {{ title }}
+                </v-btn>
+            </div>
         </v-col>
     </v-row>
 </template>
@@ -19,6 +42,14 @@ export default {
         title: {
             type:       String,
             default:    "Link 1"
+        },
+        breadcrumbs: {
+            type:       Object,
+            default:    () => ({
+                            text: 'NoName',
+                            disabled:   true,
+                            href: '/'
+                        })
         }
     },
     data: () => {
@@ -36,6 +67,9 @@ export default {
           }
         ]
       });
+    },
+    computed: {
+
     }
 }
 </script>

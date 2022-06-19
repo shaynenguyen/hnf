@@ -1,5 +1,5 @@
 export default {
-    SWITCH_CREATE_DIALOG({state}){
+    SWITCH_CREATE_DIALOG(state){
         state.createdDialog = !state.createdDialog
     },
     SWITCH_CONFIRM_DIALOG({state}){

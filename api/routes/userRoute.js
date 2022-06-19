@@ -4,7 +4,7 @@ const controller        = require('../controllers/userControllers');
 const router            = express.Router();
 
 // Singup Route
-router.get('/signup', controller.signup);
+router.get('/signup', controller.register);
 
 // Login Route
 router.get('/login', controller.login);

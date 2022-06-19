@@ -25,8 +25,9 @@
                 </v-btn>
                 <v-btn
                     depressed
-                    color="info"
+                    color="primary"
                     class="float-right"
+                    @click="openCreateProjectDialog"
                 >
                     <v-icon class="mr-2">mdi-plus</v-icon>
                     New {{ title }}
@@ -37,6 +38,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     props: {
         title: {
@@ -69,7 +72,14 @@ export default {
       });
     },
     computed: {
-
+        ...mapState('projects',{
+            createdDialog: state => state.createdDialog
+        })
+    },
+    methods: {
+        openCreateProjectDialog(){
+            this.$emit('createNewDialog')
+        }
     }
 }
 </script>

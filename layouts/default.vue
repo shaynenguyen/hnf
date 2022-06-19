@@ -1,33 +1,33 @@
 <template>
     <v-app dark>
         <!-- Main Navigation  -->
-        <LeftNav />
+        <LeftNav  :title="title"/>
 
         <!-- Header Section  -->
-        <Header :title="title"/>
+        <Header/>
 
         <!-- Page Content  -->
         <v-main>
           <v-container>
               <Nuxt />
           </v-container>
+          <Dialog />
         </v-main>
-        <RightNav />
+        <!-- <RightNav /> -->
 
         <!-- Footer Section  -->
-        <Footer />
+        <!-- <Footer /> -->
     </v-app>
 </template>
 
 <script>
 import LeftNav from '@/components/_leftNavigation';
-import RightNav from '@/components/_rightNavigation';
-import Footer from '@/components/_footer';
 import Header from '@/components/_header';
+import Dialog from '@/components/_loadingDialog'
 
 export default {
   name: 'DefaultLayout',
-  components: { LeftNav, RightNav, Footer, Header },
+  components: { LeftNav, Header, Dialog },
   data() {
     return {
       title:    'HNF Project'

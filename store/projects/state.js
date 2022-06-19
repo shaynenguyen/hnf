@@ -1,7 +1,6 @@
 export default () => ({
-    projectList:    null,
     loadedProject:  null,
-    createdDialog:  null,
+    createdDialog:  false,
     confirmDialog:  null,
     listHeader:     ['Id', 'Name', 'Creator', 'During', 'Status']
 })

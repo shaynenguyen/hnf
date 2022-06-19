@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Header Content  -->
-        <ContentHeader title="Project"/>
+        <ContentHeader title="Project" @createNewDialog="handleCreator"/>
         <Tags />
 
         <!-- Main Content  -->
@@ -33,21 +33,25 @@
                 <Pagination />
             </v-list-item>
         </v-list>
+
+        <!-- Dialogs  -->
+        <Dialog />
     </div>
 </template>
 
 <script>
-import { mapMutations, mapActions} from 'vuex';
-import Project from '../components/routes/project'
+import { mapMutations, mapState } from 'vuex';
+import Project from '../components/projects/singleProject'
 import Skeleton from '../components/skeletons/projectSkeleton'
 import ContentHeader from '@/components/contentHeader';
 import Pagination from '@/components/_pagination';
 import ListHeader from '@/components/static/projectListHeader';
+import Dialog from '@/components/projects/projectDialog'
 import Tags from '@/components/_tags';
 
 export default {
     name: 'ProjectPage',
-    components: { Project, Skeleton, ContentHeader, Pagination, ListHeader, Tags},
+    components: { Project, Skeleton, ContentHeader, Pagination, ListHeader, Tags, Dialog},
     layout: 'default',
     async asyncData({ $axios }) {
        const result = (await $axios.get("/project/list-all")).data;
@@ -58,19 +62,21 @@ export default {
        return { message, projectList }
     },
     computed: {
-        // ...mapState({
-        //     listHeader: state => state.projects.listHeader
-        // })
+        ...mapState('projects',{
+            listHeader:     state => state.listHeader,
+            createdDialog:  state => state.createdDialog
+        })
     },
     methods: {
-        ...mapMutations([
-            'UPDATE_SKELETON',
-            'UPDATE_MESSAGE',
-            'projects/UPDATE_LIST_PROJECTS'
+        ...mapMutations('projects',[
+            'SWITCH_CREATE_DIALOG'
         ]),
-        ...mapActions({
-            getProject: 'projects/getProject'
-        })
+        openCreatedDialog() {
+            this.$store.dispatch('projects/SWITCH_CREATE_DIALOG',!this.$store.state.projects.createdDialog);
+        },
+        handleCreator(){
+            this.SWITCH_CREATE_DIALOG();
+        }
     }
 }
 </script>

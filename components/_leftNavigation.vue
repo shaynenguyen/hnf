@@ -3,11 +3,16 @@
       :value="mainDrawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
+      app
       fixed
       permanent
-      app
+      height="100%"
     >
       <v-list>
+        <v-list-item>
+          <v-list-item-title class="primary--text text-title">{{ title }}</v-list-item-title>
+        </v-list-item>
+        <v-divider class="mt-2"></v-divider>
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
@@ -36,6 +41,12 @@
 import { mapState } from 'vuex';
 export default {
   name: "LeftNavigation",
+  props: {
+    title: {
+            type:   String,
+            default: "Default"
+        }
+  },
   data() {
       return{
         items: [
@@ -51,8 +62,8 @@ export default {
         },
         {
           icon: 'mdi-view-week-outline',
-          title: 'Rosters',
-          to: '/rosters'
+          title: 'Schedules',
+          to: '/schedules'
         },
         {
           icon: 'mdi-warehouse',

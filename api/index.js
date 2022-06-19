@@ -2,8 +2,8 @@
 // ======================
 const express            = require('express');
 const promiseMiddleware  = require('./middleware/promise');
-const surfingMiddleware  = require('./middleware/protectSurfing');
-const cookieMiddleware   = require('./middleware/cookie');
+// const surfingMiddleware  = require('./middleware/protectSurfing');
+// const cookieMiddleware   = require('./middleware/cookie');
 
 const routes             = require('./routes');
 const app                = express();
@@ -12,10 +12,10 @@ const app                = express();
 // 2. middleware configuration
 app.use(express.json()) // Init body-parser options (inbuilt with express)
 app.use(promiseMiddleware());
-app.use(surfingMiddleware.cookieParser);
-app.use(surfingMiddleware.csrfMiddleware);
-app.use(surfingMiddleware.helmet);
-app.use(cookieMiddleware);
+// app.use(surfingMiddleware.cookieParser);
+// app.use(surfingMiddleware.csrfMiddleware);
+// app.use(surfingMiddleware.helmet);
+// app.use(cookieMiddleware);
 
 // 3. Require & Import API ROUTES
 // ==============================

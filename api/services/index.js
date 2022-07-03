@@ -15,22 +15,40 @@ export const services = (res, details, status = true) =>{
                 })
     }
 
+    // Request Data is not valid
+    if(typeof details === "string"){
+        return res.status(400).send({
+                    status: 'failure' ,
+                    data: {
+                        message: details
+                    }
+                })
+    }
+    // if(typeof details === "string"){
+    //     return res.status(status? 201 : 400).send({
+    //                 status: status? 'success' : 'failure' ,
+    //                 data: {
+    //                     message: details
+    //                 }
+    //             })
+    // }
+
+    if(details.code && details.code === 11000) {
+        // Handle error code from MongoDB
+        return res.status(500).send({
+            status: 'failed',
+            data: {
+                message: 'Duplicate username'
+            }
+        })
+    }
+
     // Data is successfully passed
     if(status) {
         return  res.status(201).send({
                     status: 'success',
                     data: details
                 });
-    }
-
-    // Request Data is not valid
-    if(typeof details === "string"){
-        return res.status(400).send({
-                    status: 'failed',
-                    data: {
-                        message: details
-                    }
-                })
     }
 
     // Error found during fetching data

@@ -8,8 +8,7 @@ require('dotenv').config();
 
 // Route in use
 const projectRoute          = require('./routes/projectRoute');
-// const userRoute             = require('./routes/userRoute');
-// const authRoute             = require('./routes/authRoute');
+const userRoute             = require('./routes/userRoute');
 
 module.exports = async (app) => {
     // Connect to Database Host
@@ -23,7 +22,7 @@ module.exports = async (app) => {
             // Routes
             // app.use('/oauth', authRoute);
             app.use('/project', projectRoute);
-            // app.use('/user', userRoute);
+            app.use('/user', userRoute);
         }
     })
 }

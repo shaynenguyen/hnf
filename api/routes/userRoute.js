@@ -1,15 +1,40 @@
-const express           = require('express');
-const controller        = require('../controllers/userControllers');
+const express       = require('express');
+const passport      = require('passport');
+const controller    = require('../controllers/userControllers');
+const { verifyTokenAndAuthorization } = require('../middleware/verifyToken');
 
-const router            = express.Router();
+// 2. Router configuration
+const router = express.Router();
 
-// Singup Route
-router.get('/signup', controller.register);
+// Register Route
+router.post('/register', controller.register)
 
 // Login Route
-router.get('/login', controller.login);
+router.post('/login', controller.login)
 
 // Logout Route
-router.get('/logout', controller.logout)
+router.get('/logout', (req, res) =>{
+    res.send('Log user out.')
+})
 
-module.exports = router;
+// Update Route
+router.put('/:id', verifyTokenAndAuthorization, controller.usersdetails)
+
+// Delete Route
+router.delete('/:id', verifyTokenAndAuthorization, controller.deleteUser)
+
+/*
+* Authenticate with Google Plus API
+*/
+router.get('/google', passport.authenticate('google',{
+    scope: ['profile']
+}))
+
+// Callback Route for google to redirect.
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+
+})
+
+
+
+module.exports = router

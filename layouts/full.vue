@@ -1,9 +1,11 @@
 <template>
     <v-app dark>
         <!-- Page Content  -->
-       <div class="text-center my-auto">
-           <Nuxt />
-       </div>
+        <v-main>
+            <v-container>
+                <Nuxt />
+            </v-container>
+        </v-main>
     </v-app>
 </template>
 

@@ -23,6 +23,15 @@ router.put('/:id', verifyTokenAndAuthorization, controller.usersdetails)
 // Delete Route
 router.delete('/:id', verifyTokenAndAuthorization, controller.deleteUser)
 
+// Find User Route
+router.get('/find/:id', verifyTokenAndAuthorization, controller.findUser)
+
+// Find All User Route
+router.get('/findalluser', verifyTokenAndAuthorization, controller.findAllUsers)
+
+// Statistics User Route
+router.get('/stats', verifyTokenAndAuthorization, controller.statisticsUsers)
+
 /*
 * Authenticate with Google Plus API
 */

@@ -69,11 +69,60 @@ const updateUser = (targetId, targetUser) => {
             $set: targetUser,
         },
         { new: true }
-        )
+    )
+}
+
+// Delete User
+const deleteUser = (targetId) => {
+    return User.findByIdAndDelete(targetId)
+}
+
+// Find User
+const findUser = (targetId) => {
+    return User.findById(targetId)
+            .then((result) => {
+                const { password, ...others } = result._doc;
+                return {...others}
+            })
+            .catch((err) => { return err; })
+}
+
+// Find All User
+const findAllUsers = (query) => {
+
+    // TODO: return All Users without password
+    return query?  User.find().sort({_id: -1}).limit(5) : User.find()
+            .then((result) => { return result; })
+            .catch((err) => { return err;})
+}
+
+// Statistics User
+const statisticsUsers = () => {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+
+    return User.aggregate([
+        {   $match: { createdAt: { $gte: lastYear }}},
+        {
+            $project: {
+                month: { $month: "$createdAt" }
+            },
+        },
+        {
+            $group: {
+                _id: "$month",
+                total: { $sum: 1}
+            }
+        }
+    ])
 }
 
 module.exports = {
     registerNewUser,
     login,
-    updateUser
+    updateUser,
+    deleteUser,
+    findUser,
+    findAllUsers,
+    statisticsUsers
 }

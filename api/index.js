@@ -20,7 +20,6 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(surfingMiddleware.cookieParser);
 app.use(surfingMiddleware.helmet);
-app.use(surfingMiddleware.csrfProtection);
 
 // 3. Require & Import API ROUTES
 // ==============================

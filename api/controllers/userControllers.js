@@ -80,13 +80,67 @@ const usersdetails = async (req, res) => {
 
 // Delete user
 const deleteUser = (req, res) => {
-    // TODO: delete user
-    try{
+    const deleteId = req.params.id;
 
+    // Validate Params id
+    if(!isValidId(deleteId)){
+        services(res, deleteId + " is not valid", false)
+    }else{
+        // Pass Delete Id to Service layer
+        try{
+            userService.deleteUser(req.params.id);
+            services(res, {message: "User with Id, " + deleteId + ", has removed!"})
+        }catch(err){
+            services(res, {error: err?.message || err}, false)
+        }
+    }
+}
+
+// Find user
+const findUser = async (req, res) => {
+    const targetId = req.params.id;
+
+    // Validate params id
+    if(!isValidId(targetId)){
+        services(res, targetId + " is not valid", false)
+    }else{
+        // Pass Id to Service layer
+        try{
+            const findOut = await userService.findUser(targetId);
+            services(res, findOut);
+        }catch(err){
+            services(res, {error: err?.message || err}, false)
+        }
+    }
+}
+
+// Find All user
+const findAllUsers = async (req, res) => {
+    /**
+     * @query - "...?new=true"
+     *
+     * @return - last 5 add user if true
+     */
+    try{
+        const query = req.query.new;
+        const findAll = await userService.findAllUsers(query);
+
+        if(findAll){
+            services(res, findAll)
+        }
     }catch(err){
         services(res, {error: err?.message || err}, false)
     }
+}
 
+// Statistics User
+const statisticsUsers = async (req, res) => {
+    try{
+        const statsUser = await userService.statisticsUsers()
+        services(res, statsUser )
+    }catch(err){
+        services(res, {error: err?.message || err}, false)
+    }
 }
 
 module.exports = {
@@ -94,5 +148,8 @@ module.exports = {
     login,
     logout,
     usersdetails,
-    deleteUser
+    deleteUser,
+    findUser,
+    findAllUsers,
+    statisticsUsers
 }

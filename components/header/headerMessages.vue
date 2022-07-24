@@ -1,30 +1,27 @@
 <template>
     <v-menu
-      max-width="280"
       offset-y
-      bottom
-      nudge-bottom="10"
-      left>
+      nudge-bottom="22"
+      left
+      content-class="list-style notification-menu-content"
+    >
       <template #activator="{ on, attrs }">
-        <v-btn
+        <v-badge
+          :value="messageBadge"
+          color="secondary"
+          :content="messages.length"
+          overlap
           v-bind="attrs"
-          class="mr-2"
-          style="font-size: 28px"
-          icon
           @click="messageBadge ? messageBadge = !messageBadge : ''"
-          v-on="on">
-          <v-badge
-              :value="messageBadge"
-              color="secondary"
-              :content="messages.length"
-              overlap>
-              <v-icon
-                  color="rgba(255, 255, 255, 0.35)"
-                  style="font-size: 28px">
-                  mdi-email-outline</v-icon>
-            </v-badge>
-        </v-btn>
+          v-on="on"
+        >
+          <v-icon>
+            mdi-bell-outline
+          </v-icon>
+        </v-badge>
       </template>
+
+      <!-- Clickable Display Content  -->
       <v-list>
         <div class="text-h5 grey--text text--darken-3 px-4 pt-4">New Messages</div>
         <div class="subtitle-2 secondary--text font-weight-regular px-4 pb-2 link-item">4 new Messages</div>
@@ -65,16 +62,22 @@
 </template>
 
 <script>
+/**
+ * @layout - from '@src/layouts/variants/vertical-nav/LayoutContentVerticalNav.vue'
+ *
+ * @content - from '@src/core/layouts/components/app-bar/AppBarNotification.vue'
+ */
+
 export default {
     name: 'HeaderMessages',
-    props: {
-        messages: {
-            type:       Array,
-            default:    null
-        }
-    },
     data: () => ({
-        messageBadge: true
+        messageBadge: true,
+        messages: [
+          { text: 'JH', name: 'Jane Hew', message: 'Hey! How is it going?', time: '09:32', color: 'warning' },
+          { text: 'LB', name: 'Lloyd Brown', message: 'Check out my new Dashboard', time: '10:02', color: 'success'  },
+          { text: 'MW', name: 'Mark Winstein', message: 'I want rearrange the appointment', time: '12:16', color: 'error'  },
+          { text: 'LD', name: 'Liana Dutti', message: 'Good news from sale department', time: '14:56', color: 'primary'  },
+        ],
     })
 }
 </script>

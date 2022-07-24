@@ -43,11 +43,11 @@
 import { mapMutations, mapState } from 'vuex';
 import Project from '../components/projects/singleProject'
 import Skeleton from '../components/skeletons/projectSkeleton'
-import ContentHeader from '@/components/contentHeader';
-import Pagination from '@/components/_pagination';
+import ContentHeader from '@/components/used/contentHeader';
+import Pagination from '@/components/used/_pagination';
 import ListHeader from '@/components/static/projectListHeader';
 import Dialog from '@/components/projects/projectDialog'
-import Tags from '@/components/_tags';
+import Tags from '@/components/used/_tags';
 
 export default {
     name: 'ProjectPage',

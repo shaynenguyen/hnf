@@ -15,7 +15,6 @@ const sessionStore = new MongoStore({
     collection:     'sessions'
 })
 const options = {
-    name:               'sessionHF',
     secret:             process.env.SESSION_SECRET,
     resave:             false,
     saveUninitialized:  true,

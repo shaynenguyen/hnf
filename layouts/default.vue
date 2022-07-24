@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import LeftNav from '@/components/_leftNavigation';
-import Header from '@/components/_header';
-import Dialog from '@/components/_loadingDialog'
+import LeftNav from '@/components/LeftNavigation';
+import Header from '@/components/Header';
+import Dialog from '@/components/used/_loadingDialog'
 
 export default {
   name: 'DefaultLayout',

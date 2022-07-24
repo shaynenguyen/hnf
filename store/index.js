@@ -1,9 +1,9 @@
 // STAGE
 export const state = () => ({
-    mainDrawer:         false,
-    fixed:              false,
-    message:            'empty',
-    loadingDialog:      false,
+    mainDrawer:             false,
+    fixed:                  false,
+    message:                'empty',
+    loadingDialog:          false,
 })
 
 // MUTATIONS
@@ -20,6 +20,7 @@ export const mutations = {
     SWITCH_LOADING(state){
         state.loadingDialog = !state.loadingDialog
     },
+
 }
 
 // ACTIONS

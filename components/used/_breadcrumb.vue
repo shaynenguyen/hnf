@@ -1,6 +1,6 @@
 <template>
     <v-breadcrumbs :items="items">
-        <template v-slot:divider>
+        <template #:divider>
             <v-icon>mdi-chevron-right</v-icon>
         </template>
     </v-breadcrumbs>
@@ -27,6 +27,6 @@ export default {
 
 <style lang="scss" scoped>
     a{
-        color: $info;
+        color: $secondary;
     }
 </style>

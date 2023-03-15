@@ -81,9 +81,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 a{
     text-decoration: none;
-    color: #FBF5F3 !important;
+    color: $white !important;
 }
 </style>

@@ -2,8 +2,9 @@
 export const state = () => ({
     mainDrawer:             false,
     fixed:                  false,
-    message:                'empty',
     loadingDialog:          false,
+    loginUser:              '',
+    authenticated:          false,
 })
 
 // MUTATIONS
@@ -17,14 +18,29 @@ export const mutations = {
     UPDATE_MESSAGE(state, payload){
         state.message = payload
     },
-    SWITCH_LOADING(state){
+    TOGGLE_LOADING_DIALOG(state){
         state.loadingDialog = !state.loadingDialog
     },
-
+    UPDATE_LOGIN_USER(state, payload){
+        state.loginUser = payload
+    },
+    TOGGLE_AUTHENTICATED(state){
+        state.authenticated = !state.authenticated
+    }
 }
 
 // ACTIONS
 export const actions = {}
 
 // GETTERS
-export const getters = {}
+export const getters = {
+    getLoadingDialog(state){
+        return state.loadingDialog;
+    },
+    getLoginUser(state){
+        return state.loginUser;
+    },
+    getAuthenticated(state){
+        return state.authenticated;
+    }
+}

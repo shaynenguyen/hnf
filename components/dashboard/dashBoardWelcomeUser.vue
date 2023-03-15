@@ -3,10 +3,10 @@
     <v-row class="ma-0 pa-0">
       <v-col cols="8">
         <v-card-title class="text-no-wrap pt-1 ps-2">
-          Congratulations Shayne! 🥳
+          Congratulations {{ loginUser }} ! 🥳
         </v-card-title>
         <v-card-subtitle class="text-no-wrap ps-2">
-          You have won Trophy
+          Has completed 13 services today.
         </v-card-subtitle>
         <v-card-text class="d-flex align-center mt-2 pb-2 ps-2">
           <div>
@@ -18,7 +18,7 @@
               small
               color="primary"
             >
-              View Sales
+              View Records
             </v-btn>
           </div>
         </v-card-text>
@@ -43,6 +43,22 @@
     </v-row>
   </v-card>
 </template>
+
+<script>
+import { mapState, mapGetters } from 'vuex';
+
+export default {
+  name: 'WelcomeUser',
+  computed : {
+    ...mapState({
+      loginUser:  state => state.loginUser
+    }),
+    ...mapGetters([
+      'getLoginUser'
+    ])
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .greeting-card {

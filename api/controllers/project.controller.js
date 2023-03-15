@@ -2,7 +2,7 @@
     In api/controllers/projectControllerR
 */
 const { isValidId ,services }  = require('../services');
-const projectService            = require('../services/projectService');
+const projectService            = require('../services/project.service');
 
 // List Project Controller
 const getAllProjects = async (req, res) => {

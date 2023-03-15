@@ -90,7 +90,7 @@ export default {
                 avatar: require('@/assets/images/pages/atm-card.png'),
                 avatarColor: 'warning',
                 title: 'Mastercard',
-                subtitle: 'Netflix',
+                subtitle: 'Social Marketing',
                 transaction: '-$99',
             },
             {
@@ -104,7 +104,7 @@ export default {
                 avatar: require('@/assets/images/pages/arrow-growth.png'),
                 avatarColor: 'info',
                 title: 'Transfer',
-                subtitle: 'Refund',
+                subtitle: 'Logistics',
                 transaction: '+$8,934',
             },
         ],

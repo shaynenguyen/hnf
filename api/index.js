@@ -1,7 +1,6 @@
 // 1. Import dependencies
 // ======================
 const express                   = require('express');
-const errorHandlerMiddleware    = require('./middleware/errorHandling');
 const surfingMiddleware         = require('./middleware/protectSurfing');
 const session                   = require('./middleware/cookie');
 const routes                    = require('./routes');
@@ -24,15 +23,6 @@ app.use(surfingMiddleware.helmet);
 // 3. Require & Import API ROUTES
 // ==============================
 routes(app);
-
-
-// 4. General error handling
-// =========================
-/**
- * Any error handler middleware must
- * be added AFTER defined routes.
- */
-app.use(errorHandlerMiddleware);
 
 // 5. Export the server middleware ( Extend server )
 // =================================================

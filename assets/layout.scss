@@ -1,0 +1,47 @@
+@import '@/assets/variables.scss';
+
+
+// .theme--dark.v-application{
+//     background: $dark-shades !important;
+// }
+
+.theme--dark.v-application,
+.v-date-picker-table .v-btn.v-btn--active,
+.theme--dark.v-list,
+.theme--dark.v-card,
+.theme--dark.v-card > .v-card__text,
+.theme--dark.v-card > .v-card__subtitle,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__day,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__weeknumber,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weeknumber,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday.v-past,
+.theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled){
+    color: $white !important;
+}
+.container .theme--dark.v-card,
+.container .theme--dark.v-list,
+.container .theme--dark.v-sheet,
+.container .theme--dark.v-data-table,
+.v-navigation-drawer--fixed{
+    background-color: $dark-shades !important;
+}
+
+.theme--dark.v-calendar-weekly .v-calendar-weekly__day,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weeknumber,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday.v-past,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__weeknumber{
+    border-color: $white !important;
+}
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday.v-outside,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__weeknumber,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__day.v-outside,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weeknumber{
+    background-color: transparent !important;
+}
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday.v-outside,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weekday,
+.theme--dark.v-calendar-weekly .v-calendar-weekly__head-weeknumber{
+    border-color: transparent !important;
+}

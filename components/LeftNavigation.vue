@@ -1,6 +1,6 @@
 <template>
      <v-navigation-drawer
-      :value="isVerticalNavMini"
+      ::mini-variant.sync="isVerticalNavMini"
       app
       floating
       width="240"
@@ -18,6 +18,7 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
   name: "LeftNavigation",
   components: {

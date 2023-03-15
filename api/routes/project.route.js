@@ -1,7 +1,7 @@
 const express           = require('express')
 const bodyParser        = require("body-parser");
 
-const controller        = require('../controllers/projectControllers');
+const controller        = require('../controllers/project.controller');
 
 // 1. Middleware configuration
 const urlencodedParser      = bodyParser.urlencoded({ extended: false})

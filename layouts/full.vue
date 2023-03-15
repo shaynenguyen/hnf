@@ -1,11 +1,20 @@
 <template>
     <v-app dark>
         <!-- Page Content  -->
-        <v-main>
-            <v-container>
-                <Nuxt />
-            </v-container>
-        </v-main>
+        <transition
+            name="scroll-x-transition"
+            mode="out-in"
+            appear
+            hide-on-leave
+        >
+            <!-- https://vuetifyjs.com/en/styles/transitions/#api -->
+            <v-main>
+                <v-container>
+                    <Nuxt />
+                </v-container>
+            </v-main>
+        </transition>
+
     </v-app>
 </template>
 

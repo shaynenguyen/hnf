@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - hnf',
-    title: 'hnf',
+    titleTemplate: '%s - HNFPRO',
+    title: 'HNFPRO',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -21,7 +21,15 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/notifier.js', mode: 'client'}
+  ],
+
+  router: {
+    middleware: [
+      'security'
+    ]
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -40,7 +48,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -56,11 +63,6 @@ export default {
     },
   },
 
-  // Authentication for Nuxt
-  auth: {
-
-  },
-
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -68,18 +70,24 @@ export default {
     theme: {
       dark: true,
       themes: {
+        light: {
+          primary:    '#99dad4', // Breaker Bay
+          secondary:  '#FFA17A', //
+          accent:     colors.grey.darken3,
+          info:       '#16161C', // Shark
+          success:    '#54ad69', // Fruit Salad
+          warning:    '#d7a02a', // Hokey-Pokey
+          error:      '#f44336', // Pomegranate
+        },
         dark: {
-          primary:    colors.teal.base, // Persian Green/Teal
-          accent:     colors.grey.darken2,
-          white:      '#FBF5F3', // Snow
-          secondary:  '#5C8001', // Avocado
-          info:       '#0C7489', // Teal Blue
-          warning:    '#FBB02D', // Bright Yellow Crayola
-          error:      '#FB6107', // Orange Pantone
-          ongoing:    '#5C8001', // Avocado
-          complete:   '#0C7489', // Teal Blue
-          postpone:   '#FBB02D', // Bright Yellow Crayola
-          overdue:    '#FB6107', // Orange Pantone
+          primary:    colors.teal.darken2,
+          secondary:  '#FFA17A',
+          accent:     colors.grey.darken3,
+          info:       colors.lightBlue.darken2,
+          success:    '#389f58', // Chateau Green
+          warning:    '#b58f20',  // colors.amber.base,
+          error:      '#F44336', // colors.deepOrange.accent4,
+          background: '#18171F'
         },
       },
     },

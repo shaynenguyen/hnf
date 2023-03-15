@@ -5,7 +5,7 @@
       cols="12"
       md="4"
     >
-      <DashboardUser />
+      <DashboardUser/>
     </v-col>
     <v-col
       cols="12"
@@ -19,7 +19,7 @@
       cols="12"
       md="4"
     >
-      <DashBoardServicesByStaff />
+      <DashBoardTotalEarn />
     </v-col>
     <v-col
       cols="12"
@@ -98,7 +98,7 @@
       cols="12"
       md="4"
     >
-      <DashBoardTotalEarn />
+      <DashBoardServicesByStaff />
     </v-col>
   </v-row>
 </template>

@@ -1,90 +1,61 @@
 <template>
-   <v-row align="center" justify="center" class="my-auto">
-        <v-col cols="12" md="8" sm="8">
-            <v-card class="elevation-12">
-                <v-window v-model="step">
-                    <!-- Step 1  -->
-                    <v-window-item :value="1">
-                        <v-row>
-                            <v-col cols="12" md="8">
-                                <v-card-text class="mt-12">
-                                    <h1 class="text-center display-2 teal--text text--accent-3">
-                                        Login to HNF
-                                    </h1>
-                                    <Socials />
-                                    <h4 class="text-center mt-4 accent--text">Ensure your email for registration.</h4>
-                                    <Forms :hasName="false"/>
-                                    <h3 class="text-center mt-3">Forgot your password ?</h3>
-                                </v-card-text>
-                                <div class="text-center my-3">
-                                    <v-btn rounded color="teal darken-2 accent-4">Sign In</v-btn>
-                                </div>
-                            </v-col>
-                            <v-col cols="12" md="4" class="teal accent-4">
-                                <HighlightContent
-                                    :displayTop="`Hello, Friends !`"
-                                    :displayMiddle="`Enter your personnel details and start journey with us.`"
-                                />
-                                <div class="text-center">
-                                    <v-btn rounded outlined dark @click="step++">Sign up</v-btn>
-                                </div>
-                            </v-col>
-                        </v-row>
-                    </v-window-item>
+    <div class="auth-wrapper justify-center mt-7">
+        <div class="auth-inner">
+            <v-card class="auth-card">
+                <!-- Logo  -->
+                <v-card-title class="d-flex align-center justify-center">
+                    <AppLogo />
+                </v-card-title>
 
-                    <!-- Step 2  -->
-                    <v-window-item :value="2">
-                        <v-row class="fill-height">
-                            <v-col cols="12" md="4" class="teal accent-4">
-                                <HighlightContent
-                                    :displayTop="`Welcome Back !`"
-                                    :displayMiddle="`To keep connected with us please login with your personnel info`"
-                                />
-                                <div class="text-center my-3">
-                                    <v-btn rounded outlined dark @click="step--">Sign In</v-btn>
-                                </div>
-                            </v-col>
-                            <v-col cols="12" md="8" sm="8">
-                                <v-card-text class="mt-12">
-                                    <h1 class="text-center display-2 teal--text text--accent-3">Create Account</h1>
-                                    <Socials />
-                                    <h4 class="text-center mt-4 accent--text">Ensure your email for registration.</h4>
-                                    <Forms/>
-                                </v-card-text>
-                                <div class="text-center mb-3">
-                                    <v-btn rounded color="teal darken-2 accent-4">Register</v-btn>
-                                </div>
-                            </v-col>
-                        </v-row>
-                    </v-window-item>
-                </v-window>
+                <!-- Login form  -->
+                <v-card-text class="mt-7">
+                    <Form />
+                </v-card-text>
+
+                <!-- Switch  -->
+                <SwitchLog />
+
+                <!-- divider -->
+                <v-card-text class="d-flex align-center mt-2">
+                    <v-divider></v-divider>
+                    <span class="mx-5">or</span>
+                    <v-divider></v-divider>
+                </v-card-text>
+
+                <!-- Social Link  -->
+                <SocialLink />
             </v-card>
-        </v-col>
-    </v-row>
+        </div>
+
+        <!-- Background Shape  -->
+        <!-- @source: https://icons8.com/illustrations/illustration/casual-life-3d-girl-and-boy-sitting-with-laptop-1 -->
+        <img
+            class="auth-mask-bg"
+            height="173"
+            :src="require(`@/assets/images/misc/mask-dark.png`)"
+        >
+        <v-img
+            class="auth-tree"
+            width="214"
+            height="400"
+            :src="require(`@/assets/images/misc/login-2.png`)"
+        ></v-img>
+    </div>
 </template>
 
 <script>
-import Socials from '@/components/logs/componentLogSocial'
-import Forms from '@/components/logs/componentLogForm'
-import HighlightContent from '@/components/logs/componentLogHightlightColumn'
-
-
 export default {
     name: 'LoginPage',
-    components: { Socials, Forms, HighlightContent },
-    layout: 'full',
-    props: {
-        source: {
-            type:   String,
-            default: null
-        }
+    components: {
+        AppLogo:    () => import('@/components/AppLogo'),
+        Form:       () => import('@/components/auth/authForm'),
+        SocialLink: () => import('@/components/auth/authSocialLinks'),
+        SwitchLog:  () => import('@/components/auth/authSwitch')
     },
-    data: () => ({
-        step: 1,
-    }),
+    layout: 'full'
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import '@/assets/pages/auth.scss';
 </style>

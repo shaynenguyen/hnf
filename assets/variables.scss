@@ -4,21 +4,37 @@
 // $font-size-root: 20px;
 /* SCSS COLOR MAIN HEX */
 // ========================
-$tea-green: #c1e1c1ff;
-$avocado: #5c8001ff;
-$teal-blue: #0c7489ff;
-$bright-yellow-crayola: #fbb02dff;
-$orange-pantone: #fb6107ff;
-$white:      #FBF5F3; // Snow
-$accent:     '#424242';
+// $heading-font-family: 'Permanent Marker';
+// $body-font-family: 'Neucha';
+// $font-size-root: 24px;
+
+// =============================
+$main_color:    #00796b; // colors.teal.darken2
+$primary_light: #48a999;
+$primary_dark:  #004c40;
+
+$hint-of-red:    #EEEBE9;
+$fountain-blue:  #69A0AB;
+$slate-gray:     #5E6D7A;
+$woodsmoke:      #18171F;
+
+$fruit-salad:   #389f58;
+$hokey-pokey:   #b58f20;
+$pomegranate:   #F44336;
+
+$light-accent:  $fountain-blue;
+$light-shades:  $hint-of-red;
+
+$dark-accent:   $slate-gray;
+$dark-shades:   $woodsmoke;
+
 
 // LEVEL 2 COLOUR
 // ========================
-$secondary:  $avocado; // Avocado
-$info:       $teal-blue; // Teal Blue
-$warning:    $bright-yellow-crayola; // Bright Yellow Crayola
-$error:      $orange-pantone; // Orange Pantone
-$ongoing:    $avocado; // Avocado
-$complete:   $teal-blue; // Teal Blue
-$postpone:   $bright-yellow-crayola; // Bright Yellow Crayola
-$overdue:    $orange-pantone; // Orange Pantone
+$white:      $hint-of-red;
+$black:      $woodsmoke;
+$secondary:  #FFA17A;
+$accent:     #424242;
+
+// Theme
+// ===========================

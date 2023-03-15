@@ -1,0 +1,100 @@
+@import '@/assets/variables.scss';
+
+.app-strategy {
+    .v-calendar{
+        height: calc(100% - 58px);
+    }
+    // Switch Btn
+    .v-item--active i{
+        color: $main_color !important;
+    }
+
+    // Rosters
+    .v-calendar-daily,
+    .v-calendar-weekly{
+        background-color: transparent !important;
+        border-color: transparent !important;
+
+        .v-calendar-daily__scroll-area{
+            overflow: hidden !important;
+        }
+        .v-calendar-daily__head{
+            .v-calendar-daily_head-day:last-child{
+                border-right: transparent 1px solid !important;
+            }
+        }
+
+        // Backgrounds
+        .v-calendar-daily__day{
+            border-color: transparent !important;
+
+            .v-calendar-daily__day,
+            .v-calendar-daily__day-interval{
+                border-color: transparent !important
+            }
+        }
+
+        // Events
+        .v-event-timed-container{
+
+            .v-event-timed{
+                width: 1rem !important;
+                text-overflow: hidden;
+            }
+
+            .v-event-timed:first-child{
+                left: 33% !important;
+            }
+
+            .v-event-timed:last-child{
+                left: 52% !important;
+            }
+
+            // Colors
+            .primary{
+                border-color: $main_color !important;
+            }
+            .accent{
+                border-color: $accent !important;
+            }
+            .secondary{
+                border-color: $secondary !important;
+                color: $black !important;
+            }
+        }
+    }
+    .v-calendar-daily__scroll-area{
+        // overflow-y:  hidden !important;
+    }
+    .booking-indicator{
+        .v-picker__body{
+            background-color: transparent !important;
+        }
+
+    }
+
+    // Bookings
+    .v-calendar-monthly{
+        min-height: 68vh;
+
+        .v-calendar-weeklyweek{
+            .v-calendar-weekly__day{
+                div:not(:first-child){
+                    display: inline-block;
+                    width: 20px !important;
+                    border-radius: 50%;
+                    left: 31%;
+                    top: 10%;
+                    color: transparent !important;
+                    background-color: $main_color !important;
+                }
+                div:nth-child(3){
+                    left: 38%;
+                }
+                div.secondary{
+                    background-color: $secondary !important;
+                }
+            }
+        }
+    }
+}

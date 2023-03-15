@@ -25,6 +25,6 @@ export default {
 
 <style lang="scss" scoped>
     .v-pagination__item--active.primary{
-        background-color: $accent !important;
+        background-color: $dark-accent !important;
     }
 </style>

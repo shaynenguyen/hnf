@@ -2,16 +2,20 @@
     IN api/services/userService
 */
 const CryptoJS  = require('crypto-js');
+const bcrypt    = require('bcrypt');
 const jwt       = require('jsonwebtoken');
-const User      = require('../models/userModel');
+const User      = require('../models/user.model');
 require('dotenv').config();
 
 // Create New User
-const registerNewUser = (newUser) => {
+const registerUser = (newUser) => {
+    console.log(newUser)
+
     const userToInsert = new User({
         username:   newUser.username,
         email:      newUser.email,
-        password:   CryptoJS.AES.encrypt(newUser.password, process.env.CRYPTO_SECRET).toString(),
+        password:   newUser.password
+        // password:   CryptoJS.AES.encrypt(newUser.password, process.env.CRYPTO_SECRET).toString(),
         // type:       newUser.type,
         // refId:      newUser.refId,
     })
@@ -20,7 +24,9 @@ const registerNewUser = (newUser) => {
     return userToInsert.save()
                     .then((result) => {
                         // return result._id;
-                        return result;
+                        const { password, ...others } = result._doc;
+
+                        return { ...others };
                     })
                     .catch((err) => {
                         return err;
@@ -44,21 +50,40 @@ const login = (loginUser) => {
                         return 'Wrong Credentials!';
                     };
 
+                    const user = {
+                        username:   result.username,
+                        email:      result.email,
+                        thumbnail:  result.thumbnail
+                    }
+
                     // Access Token with JWT
                     const accessToken = jwt.sign({
-                                            id: result._id
+                                            user
                                         },
                                         process.env.JWT_SECRET,
                                         {
                                             expiresIn: "1d"
                                         });
 
-                    const { password, ...others } = result._doc;
-                    return {...others, accessToken };
+                    // const { password, ...others } = result._doc;
+                    // return {...others, accessToken };
+
+                    return accessToken;
                 })
                 .catch((err) => {
                     return err;
                 })
+}
+
+// Get User
+const getUser = (authHeader) => {
+    const accessToken = authHeader.split(" ")[1];
+
+    // // Verify token with JWT
+
+    const decoded = jwt.verify(accessToken, process.env.JWT_SECRET)
+
+    return decoded;
 }
 
 // Update User's details
@@ -118,8 +143,9 @@ const statisticsUsers = () => {
 }
 
 module.exports = {
-    registerNewUser,
+    registerUser,
     login,
+    getUser,
     updateUser,
     deleteUser,
     findUser,

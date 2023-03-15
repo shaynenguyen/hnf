@@ -7,31 +7,41 @@
         <Header/>
 
         <!-- Page Content  -->
-        <v-main>
-          <v-container>
-              <Nuxt />
-          </v-container>
-          <Dialog />
-        </v-main>
-        <!-- <RightNav /> -->
+        <transition
+            name="scroll-x-transition"
+            mode="out-in"
+            appear
+        >
+          <v-main>
+            <v-container>
+                <Nuxt />
+            </v-container>
+            <Dialog />
+          </v-main>
+        </transition>
 
-        <!-- Footer Section  -->
-        <!-- <Footer /> -->
+        <Snackbar />
     </v-app>
 </template>
 
 <script>
-import LeftNav from '@/components/LeftNavigation';
-import Header from '@/components/Header';
-import Dialog from '@/components/used/_loadingDialog'
 
 export default {
   name: 'DefaultLayout',
-  components: { LeftNav, Header, Dialog },
+  components: {
+    LeftNav:      () => import('@/components/LeftNavigation'),
+    Header:       () => import('@/components/Header'),
+    Dialog:       () => import('@/components/LoadingDialog'),
+    Snackbar:     () => import('@/components/Snackbar')
+  },
   data() {
     return {
-      title:    'HNF Project'
+      title:    'HNFPRO'
     }
   }
 }
 </script>
+
+<style lang="scss">
+@import '@/assets/layout.scss';
+</style>

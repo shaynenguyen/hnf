@@ -48,12 +48,17 @@ export default {
                     to: '/projects'
                 },
                 {
-                    icon: 'mdi-view-week-outline',
-                    title: 'Schedules',
-                    to: '/schedules'
+                    icon: 'mdi-file-sign',
+                    title: 'Invoices',
+                    to: '/invoice/list'
                 },
                 {
-                    icon: 'mdi-warehouse',
+                    icon: 'mdi-account-supervisor-outline',
+                    title: 'Strategy',
+                    to: '/strategy'
+                },
+                {
+                    icon: 'mdi-factory',
                     title: 'Inventory',
                     to: 'inventory'
                 }

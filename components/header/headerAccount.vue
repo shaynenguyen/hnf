@@ -9,11 +9,13 @@
     >
         <template #activator="{ on, attrs }">
             <v-badge
+                v-if="loginUser"
                 bottom
                 color="success"
                 overlap
+                bordered
                 offset-x="12"
-                offset-y="12"
+                offset-y="10"
                 class="ms-4"
                 dot
             >
@@ -22,9 +24,18 @@
                     v-bind="attrs"
                     v-on="on"
                 >
-                    <v-img :src="`https://randomuser.me/api/portraits/men/11.jpg`"></v-img>
+                    <!-- <v-img :src="$auth.user.thumbnail" ></v-img> -->
                 </v-avatar>
+                <v-icon>HN</v-icon>
             </v-badge>
+            <v-btn
+                v-else
+                icon
+                :to="{name: 'auth-login'}"
+                class="ms-1"
+            >
+                <v-icon>mdi-login-variant</v-icon>
+            </v-btn>
         </template>
         <v-list >
             <!-- No re-display avatar/role  -->
@@ -77,8 +88,9 @@
 
                 <!-- Logout  -->
                 <v-list-item
-                    to="/logout"
+                    :to="{ name: 'auth-sign-out'}"
                     nuxt
+                    @click="logoutMethods"
                 >
                     <v-list-item-icon class="me-2">
                         <v-icon size="22">
@@ -95,13 +107,16 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
     name: 'AccountComponent',
     data: () => ({
+        loggedIn:   false,
         account: [
-            { text: 'Profile', icon: 'mdi-account', to: '/user/profile'},
-            { text: 'Inbox', icon: 'mdi-email-outline', to: '/chat', total: 2},
-            { text: 'Tasks', icon: 'mdi-monitor-dashboard', to: '/chat', total: 4}
+            { text: 'Profile', icon: 'mdi-account', to: { name: 'user-profile'}},
+            { text: 'Inbox', icon: 'mdi-email-outline', to: {name: 'chat'}, total: 2},
+            { text: 'Tasks', icon: 'mdi-monitor-dashboard', to: {name: 'index'}, total: 4}
         ],
         general: [
             { text: 'Settings', icon: 'mdi-cog-outline'},
@@ -113,6 +128,20 @@ export default {
             icon: 'mdi-logout'
         }
     }),
+    computed: {
+        ...mapState({
+            loginUser:  state => state.loginUser
+        }),
+        ...mapGetters([
+            'UPDATE_LOGIN_USER'
+        ])
+    },
+    methods: {
+        async logoutMethods(){
+            await this.$auth.logout()
+                    .then(() => this.$router.push({name: 'auth-sign-out'}));
+        }
+    }
 }
 </script>
 

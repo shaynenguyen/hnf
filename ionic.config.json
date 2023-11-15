@@ -1,0 +1,7 @@
+{
+  "name": "hnf_sdk",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
